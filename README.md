@@ -134,8 +134,11 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 https://howto.lintel.in/install-nvidia-arch-linux/
 
-7、高分屏调节字体Xfce下。搞不定就装kde
-
+7、高分屏调节字体Xfce下。搞不定就装kde。
+用下面的命令获取当前最合适的字体大小。96,192,280都有可能。
+~~~
+xdpyinfo | grep resolution
+~~~~
     7.1设置 外观 字体 DPI 280
 
     7.2 设置 桌面  图标 图标大小 96
