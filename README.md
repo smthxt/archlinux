@@ -1,1 +1,1 @@
-# archlinux
+# archlinux 安装注意事项
