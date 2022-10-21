@@ -3,9 +3,9 @@
 ~~~
 https://wiki.archlinux.org/title/Installation_guide#Partition_the_disks
 ~~~
-0 硬盘要GPT格式，MBR转GPT有可能出错，硬盘得备份。
+0、硬盘要GPT格式，MBR转GPT有可能出错，硬盘得备份。
 
-1 分区等基础命令命令
+分区等基础命令命令
 
 ~~~
 sudo fdisk -l
@@ -25,7 +25,7 @@ mkdir -p /mnt/boot/efi    //用不上
 mount /dev/sda1 /mnt/boot/efi //用不上
 ~~~
 
-2 archinstall脚本安装
+1、archinstall脚本安装
 
 ~~~
 sudo pacman -Syy archinstall
@@ -60,9 +60,12 @@ curl -O https://gitee.com/zhaocaiall/ArchInstall/raw/master/deepin.sh
 
 sh ./deepin.sh
 ~~~
+以上是别人的脚本安装，我没有测试过。有bilibili视频
+~~~
+https://www.bilibili.com/video/BV14p4y1r7nQ/?spm_id_from=0.0.header_right.fav_list.click&vd_source=12f9c0c285081423c22b069cd324939a
+~~~
 
-2 装字体，中文输入法
-
+2、装字体，中文输入法
 ~~~
 pacman -S noto-fonts-cjk noto-fonts noto-fonts-emoji
 sudo vim /etc/locale.gen
@@ -81,11 +84,18 @@ XMODIFIERS=@im=fcitx
 ~~~
 重启
 
-3 iwctl 无线网卡，网络sig别有特殊的字符
+3、iwctl 无线网卡，网络sig别有特殊的字符
 ~~~
+iwctl
+device list
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect 信号源
+输入密码，回车
+quit 退出，可以ping一下baidu
 ~~~
 
-4 Arch Linux CN的软件源地址。*注意server的=两边有空格。*
+4、Arch Linux CN的软件源地址。*注意server的=两边有空格。*
 ~~~
 sudo vim /etc/pacman.conf
 ~~~
@@ -104,7 +114,7 @@ sudo pacman -S archlinuxcn-keyring
 sudo pacman -S firefox  google-chrome
 ~~~
 
-5 建立启动项
+5、建立启动项
 ~~~
 sudo pacman -S os-prober ntfs-3g efibootmgr
 sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Grub
@@ -120,11 +130,11 @@ GRUB_DISABLE_OS_PROBER="false"
 grub-mkconfig -o /boot/grub/grub.cfg
 ~~~
 
-6 nvidia 驱动
+6、nvidia 驱动
 
 https://howto.lintel.in/install-nvidia-arch-linux/
 
-7 高分屏调节字体Xfce下
+7、高分屏调节字体Xfce下。搞不定就装kde
 
     7.1设置 外观 字体 DPI 280
 
